@@ -1,0 +1,20 @@
+<!doctype html>
+{% load staticfiles %}
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Rango</title>
+	</head>
+	<body>
+		<h1>Rango says...</h1>
+		<div>
+			hey there partner <br/>
+			<strong>{{boldMessage}}</strong><br/>
+		</div>
+		<div>
+			<a href="/rango/about/">About</a>
+			<img src="{% static 'images/octocat.png' %}" alt="Octcat" />	
+		</div>
+	</body>
+</html>
