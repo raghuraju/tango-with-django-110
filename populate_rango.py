@@ -2,6 +2,9 @@
 from __future__ import print_function
 
 import os
+import sys
+
+# print(sys.path)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tango_with_django.settings.base')
 
 import django
@@ -70,7 +73,7 @@ def add_category(category_name):
 	return c
 
 def add_page(category, title, url, views=0):
-	p = Page.objects.get_or_create(category=category, title=title)
+	p = Page.objects.get_or_create(category=category, title=title)[0]
 	p.url = url
 	p.views = views
 	p.save()
