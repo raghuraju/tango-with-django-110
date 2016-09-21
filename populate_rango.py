@@ -51,13 +51,15 @@ def populate():
 	}]
 
 	categories = {
-		'Python': {'pages': python_pages},
-		'Django': {'pages': django_pages},
-		'Other Framework': {'pages': other_pages}
+		'Python': {'pages': python_pages, 'views': 128, 'likes': 64},
+		'Django': {'pages': django_pages, 'views': 64, 'likes': 32},
+		'Other Framework': {'pages': other_pages, 'views': 32, 'likes': 16}
 	}
 
 	for cat, cat_data in categories.items():
-		c = add_category(cat)
+		views = cat_data['views']
+		likes = cat_data['likes']
+		c = add_category(cat, views, likes)
 		for page in cat_data['pages']:
 			add_page(c, page['title'], page['url'])
 
@@ -66,8 +68,10 @@ def populate():
 			print("- {0} - {1}".format(str(c), str(p)))
 
 
-def add_category(category_name):
+def add_category(category_name, views, likes):
 	c = Category.objects.get_or_create(name=category_name)[0]
+	c.views = views
+	c.likes = likes
 	c.save()
 
 	return c
