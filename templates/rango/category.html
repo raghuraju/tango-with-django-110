@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Rango Category</title>
+	</head>
+	<body>
+		<div>
+			{% if category %}
+				<h1>{{ category.name }}</h1>
+				{% if pages %}
+					<ul>
+					{% for page in pages %}
+						<li>
+							<a href="{{ page.url }}">{{ page.title }}</a>
+						</li>
+					{% endfor %}
+				{% else %}
+					<strong>No pages added.</strong>
+				{% endif %}
+			{% endif %}
+		</div>
+	</body>
