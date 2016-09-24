@@ -3,6 +3,7 @@ from __future__ import print_function
 
 import os
 import sys
+import random
 
 # print(sys.path)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tango_with_django.settings.base')
@@ -79,7 +80,7 @@ def add_category(category_name, views, likes):
 def add_page(category, title, url, views=0):
 	p = Page.objects.get_or_create(category=category, title=title)[0]
 	p.url = url
-	p.views = views
+	p.views = random.randint(0,1000)
 	p.save()
 
 	return p

@@ -20,7 +20,7 @@ class PageAdmin(admin.ModelAdmin):
 	# fields = ['title','category','url']
 	fieldsets = [
 		(None, {'fields': ['category']}),
-		('Page Title & URL', {'fields': ['title','url']}),
+		('Page Details', {'fields': ['title','url','views']}),
 	]
 	list_display = ('title','category','url')
 

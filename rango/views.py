@@ -20,7 +20,11 @@ def show_category(request, category_name_url):
 
 def index(request):
 	category_list = Category.objects.order_by('-likes')[:5]
-	_context = {'categories': category_list}
+	pages_list = Page.objects.order_by('-views')[:5]
+	_context = {
+		'categories': category_list,
+		'most_viewed_pages': pages_list
+	}
 	return render(request, 'rango/index.html', context=_context)
 
 
