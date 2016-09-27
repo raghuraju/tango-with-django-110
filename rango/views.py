@@ -23,7 +23,11 @@ def add_page(request, category_slug_url):
 			return show_category(request, category_slug_url)
 		else:
 			print form.errors
-	_context = {'form': form, 'category': category}
+	_context = {
+		'form': form, 
+		'category': category,
+		'title' : 'Add a Page'
+	}
 	return render(request, 'rango/add_page.html', context=_context)
 
 
@@ -38,7 +42,7 @@ def add_category(request):
 		else:
 			print(form.errors)
 
-	return render(request, 'rango/add_category.html', {'form':form})
+	return render(request, 'rango/add_category.html', {'form':form, 'title': 'Add a Category'})
 
 
 def show_category(request, category_name_url):
@@ -61,7 +65,8 @@ def index(request):
 	pages_list = Page.objects.order_by('-views')[:5]
 	_context = {
 		'categories': category_list,
-		'most_viewed_pages': pages_list
+		'most_viewed_pages': pages_list,
+		'title' : 'Welcome to Tango with Django'
 	}
 	return render(request, 'rango/index.html', context=_context)
 

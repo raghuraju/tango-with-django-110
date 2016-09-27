@@ -1,48 +1,32 @@
-<!doctype html>
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
 
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<title>Rango</title>
-	</head>
-	<body>
-		<h1>Rango says...</h1>
-		<div>
-			hey there partner <br/>
-		</div>
-		
-		<!-- Most liked Categories -->
-		{% if categories %}
-		<h1>Most Liked Categories</h1>
-		<ul>
-			{% for category in categories %}
-				<li><a href='{% url "rango:show_category" category.slug %}'>{{ category.name }}</a></li>
-			{% endfor %}
-		</ul>
-		{% else %}
-			<strong>There are no categories present.</strong>
-		{% endif %}
+{% block title %}
+	{{ title }}
+{% endblock %}
 
-		<br>
-		<a href='{% url "rango:add_category" %}'>Add Category</a>
-		<br>
-		
-		<!-- Most Viewed Pages -->
-		{% if most_viewed_pages %}
-		<h1>Most Viewed Pages</h1>
-		<ul>
-			{% for page in most_viewed_pages %}
-				<li><a href='{{ page.url }}'>{{ page.title }}</a></li>
-			{% endfor %}
-		</ul>
-		{% else %}
-			<strong>There are no categories present.</strong>
-		{% endif %}
-
-		<div>
-			<a href="{% url 'rango:about' %}">About</a>
-			<!-- <img src="{% static 'images/octocat.png' %}" alt="Octcat" />	 -->
-		</div>
-	</body>
-</html>
+{% block body_content %}
+	<!-- Most liked Categories -->
+	{% if categories %}
+	<h1>Most Liked Categories</h1>
+	<ul>
+		{% for category in categories %}
+			<li><a href='{% url "rango:show_category" category.slug %}'>{{ category.name }}</a></li>
+		{% endfor %}
+	</ul>
+	{% else %}
+		<strong>There are no categories present.</strong>
+	{% endif %}
+	
+	<!-- Most Viewed Pages -->
+	{% if most_viewed_pages %}
+	<h1>Most Viewed Pages</h1>
+	<ul>
+		{% for page in most_viewed_pages %}
+			<li><a href='{{ page.url }}'>{{ page.title }}</a></li>
+		{% endfor %}
+	</ul>
+	{% else %}
+		<strong>There are no categories present.</strong>
+	{% endif %}
+{% endblock %}
