@@ -23,11 +23,11 @@
 		</div>
 		
 		<div>
-			<a href="/rango/add-page/{{category.slug}}/">Add Page</a>
+			<a href="{% url 'rango_add_page' category.slug %}">Add Page</a>
 		</div>
 
 		<div>
-			<a href="/rango/">Go back</a>
+			<a href="{% url 'rango_index' %}">Go back</a>
 		</div>
 	</body>
 </html>
