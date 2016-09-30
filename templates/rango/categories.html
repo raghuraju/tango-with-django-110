@@ -1,0 +1,14 @@
+{% if heading %}
+	<h1>{{ heading }}</h1>
+{% else %}
+	<h1>Categories</h1>
+{% endif %}
+<ul>
+	{% if categories %}
+		{% for c in categories %}
+			<li><a href="{% url 'rango:show_category' c.slug %}">{{ c.name }}</a></li>
+		{% endfor %}
+	{% else %}
+		<strong>No categories are added.</strong><a href="{% url 'rango:add_category' %}">Add a category</a>
+	{% endif %}
+</ul>
