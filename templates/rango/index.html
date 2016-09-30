@@ -1,22 +1,14 @@
 {% extends 'rango/base.html' %}
 {% load staticfiles %}
+{% load rango_tags_filters %}
 
 {% block title %}
 	{{ title }}
 {% endblock %}
 
 {% block body_content %}
-	<!-- Most liked Categories -->
-	{% if categories %}
-	<h1>Most Liked Categories</h1>
-	<ul>
-		{% for category in categories %}
-			<li><a href='{% url "rango:show_category" category.slug %}'>{{ category.name }}</a></li>
-		{% endfor %}
-	</ul>
-	{% else %}
-		<strong>There are no categories present.</strong>
-	{% endif %}
+	<!-- Categories -->
+	{% get_categories %}
 	
 	<!-- Most Viewed Pages -->
 	{% if most_viewed_pages %}
