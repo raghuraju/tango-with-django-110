@@ -89,3 +89,4 @@ ENV/
 .ropeproject
 
 static_root/
+media_root/
