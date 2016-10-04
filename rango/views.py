@@ -90,9 +90,7 @@ def register(request):
 
 			profile = profile_form.save(commit = False)
 			profile.user = user
-
-			print request.FILES
-			print request.FILES['picture']
+						
 			if 'picture' in request.FILES:
 				profile.picture = request.FILES['picture']
 
