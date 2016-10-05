@@ -7,6 +7,13 @@
 {% endblock %}
 
 {% block body_content %}
+	<!-- Welcome message -->
+	{% if user.is_authenticated %}
+		<p>Hello, {{ user.username }}!</p>
+	{% else %}
+		<p>Hello, Stranger!</p>
+	{% endif %}
+
 	<!-- Categories -->
 	{% most_liked_categories %}
 	

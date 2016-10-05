@@ -1,5 +1,7 @@
+from django.contrib.auth import authenticate, login
+from django.core.urlresolvers import reverse
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Category, Page
 from .forms import CategoryForm, PageForm, UserForm, UserProfileForm
 
@@ -110,3 +112,25 @@ def register(request):
 			'registered': registered
 		})
 
+
+def user_login(request):
+	if request.method == 'POST':
+		username = request.POST.get('username')
+		password = request.POST.get('password')
+
+		user = authenticate(username=username, password=password)
+
+		if user:
+			if user.is_active:
+				login(request, user)
+				return HttpResponseRedirect(reverse('rango:index'))
+			else:
+				return HttpResponse("Your account has been disabled. Please contact the admin.")
+		else:
+			return HttpResponse("Invalid username/password.")
+	else:
+		return render(request, 'rango/login.html', {})
+
+
+def user_logout(request):
+	pass
