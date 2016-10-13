@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'tango_with_django.wsgi.application'
 
 DB_NAME = os.environ.get("DB_NAME")
 DB_USER = os.environ.get("DB_USER")
-DB_PASSOWRD = os.environ.get("DB_PASSOWRD")
+DB_PASSWORD = os.environ.get("DB_PASSWORD")
 DB_HOST = os.environ.get("DB_HOST")
 DB_PORT = os.environ.get("DB_PORT")
 
