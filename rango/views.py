@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Category, Page
 from .forms import CategoryForm, PageForm, UserForm, UserProfileForm
-
+from .utils import visitor_cookie_handler
 
 def add_page(request, category_slug_url):
 	print category_slug_url
@@ -64,6 +64,7 @@ def show_category(request, category_name_url):
 
 
 def index(request):
+	request.session.set_test_cookie()
 	category_list = Category.objects.order_by('-likes')[:5]
 	pages_list = Page.objects.order_by('-views')[:5]
 	_context = {
@@ -71,10 +72,17 @@ def index(request):
 		'most_viewed_pages': pages_list,
 		'title' : 'Welcome to Tango with Django'
 	}
-	return render(request, 'rango/index.html', context=_context)
+
+	response = render(request, 'rango/index.html', context=_context)
+	visitor_cookie_handler(request, response)
+
+	return response
 
 
 def about(request):
+	if request.session.test_cookie_worked():
+		print "Test cookie worked!"
+		request.session.delete_test_cookie()
 	_context = {"author": "Raghu"}
 	return render(request, 'rango/about.html', context=_context)
 
