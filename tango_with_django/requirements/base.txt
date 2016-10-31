@@ -21,3 +21,4 @@ six==1.10.0
 traitlets==4.3.0
 wcwidth==0.1.7
 wsgiref==0.1.2
+django-registration-redux==1.4
