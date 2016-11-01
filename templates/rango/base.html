@@ -28,16 +28,16 @@
 					<a href="{% url 'rango:add_category' %}">Add Category</a>
 				</li>
 				<li>
-					<a href="{% url 'rango:register' %}">Register</a>
+					<a href="{% url 'registration_register' %}">Register</a>
 				</li>
 				<li>
-					<a href="{% url 'rango:login' %}">Login</a>
+					<a href="{% url 'auth_login' %}">Login</a>
 				</li>
 				<li>
 					<a href="{% url 'rango:restricted' %}">Restricted</a>
 				</li>
 				<li>
-					<a href="{% url 'rango:logout' %}">Logout</a>
+					<a href="{% url 'auth_logout' %}?next=/rango/">Logout</a>
 				</li>
 			</ul>
 		</div>

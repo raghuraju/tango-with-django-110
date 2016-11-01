@@ -149,7 +149,7 @@ STATICFILES_DIRS = [STATIC_DIR, ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 
-LOGIN_URL = '/rango/login/'
+LOGIN_URL = '/accounts/login/'
 
 
 # Registration related settings

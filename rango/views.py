@@ -1,3 +1,4 @@
+from registration.backends.simple.views import RegistrationView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -6,6 +7,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Category, Page
 from .forms import CategoryForm, PageForm, UserForm, UserProfileForm
 from .utils import visitor_cookie_handler
+
+
+class RangoRegistrationView(RegistrationView):
+	def get_success_url(self, user):
+		return '/rango/'
+
 
 def add_page(request, category_slug_url):
 	print category_slug_url
