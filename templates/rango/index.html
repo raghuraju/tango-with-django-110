@@ -10,6 +10,8 @@
 	<!-- Welcome message -->
 	{% if user.is_authenticated %}
 		<p>Hello, {{ user.username }}!</p>
+		<br>
+		<a href="{% url 'auth_password_change' %}">Change password</a>
 	{% else %}
 		<p>Hello, Stranger!</p>
 	{% endif %}
